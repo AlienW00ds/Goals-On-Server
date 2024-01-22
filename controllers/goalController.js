@@ -2,7 +2,7 @@ const GOALS = require("../models/goalsmodel");
 
 const getAllGoals = async (req, res) => {
     try{
-        const goals = await GOALS.find({}); // to find anything in the database
+        const goals = await GOALS.find({}).sort('-createdAt'); // to find anything in the database
         res.status(200).json({numGoals: goals.length, goals, success: true});
     }catch (error){
         res.json(error)
